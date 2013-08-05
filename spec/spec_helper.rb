@@ -42,4 +42,11 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
    config.include Capybara::DSL
+   #In case your capybara fails, use the following setting:
+  #Capybara.configure do |config|
+   # config.match = :one
+    #config.exact_options=true
+    #config.ignore_hidden_elements=true
+    #config.visible_text_only = true
+ # end
 end
