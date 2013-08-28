@@ -1,8 +1,8 @@
 Samplaapp::Application.routes.draw do
   
 
-  get "static_pages/home"
-  #root 'static_pages#home' # by making the home root , we will see the home page when we run 'http://localhost:3000/'
+  #get "static_pages/home"
+  root 'static_pages#home' # by making the home root , we will see the home page when we run 'http://localhost:3000/'
   match '/signup', to: 'users#new', via: 'get'
   match '/help', to: 'static_pages#help', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
