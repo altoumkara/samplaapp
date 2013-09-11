@@ -1,0 +1,17 @@
+<% if @user.errors.any? %>
+#any? method is just the opposite of empty?, returning true if there are any elements present and #false otherwise.
+	<div id="error_explanation">
+		<div class="alert alert-error">
+		The form contains <%= pluralize(@user.errors.count, "error") %>
+		#The other new idea is the pluralize text helper. It isn’t available in the console by #default, but we can include it explicitly through the ActionView::Helpers::TextHelper 
+		#it knows how to pluralize a large number of words, including many with irregular plurals
+		#The first method (@user.errors.count)is count, which simply returns the number of errors 
+		#error is rails object
+		</div>
+		<ul>
+		<% @user.errors.full_messages.each do |msg| %>
+			<li>* <%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+<% end %>

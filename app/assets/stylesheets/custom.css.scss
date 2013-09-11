@@ -4,6 +4,12 @@
 
 $grayMediumLight: #eaeaea;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* universal */
 
 html {
@@ -101,3 +107,67 @@ footer {
   }
 }
 
+
+/* miscellanous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;   /* this line of code includes all the element  @mixin box_sizing  group which is on top*/
+}
+
+
+/* sidebar */
+
+aside {
+  section{
+  padding : 10px 0;
+  border-top: 1px solid $grayLighter;
+  &:first-child{
+  border: 0;
+  padding-top: 0;
+  }
+  h1 {
+  font-size: 1.4em;
+  text-align: left;
+  letter-spacing: -1px;
+  margin-bottom: 3px;
+  margin-top: 0px;
+     }
+  }
+}
+
+.gravator {
+  float: left;
+  margin-right: 10px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+/*Sass’s @extend function to include the functionality of two Bootstrap classes control-group and error. As a result, on failed submission the error messages appear surrounded by red */
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+}
