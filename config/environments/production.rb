@@ -77,4 +77,11 @@ Samplaapp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Secure Sockets Layer (SSL: secure sockets layer)11 to the production application, thereby making signup secure
+#To get the deployment to work, we first need to add a line forcing the use of SSL in production. The result, which involves editing the production configuration file 
+  # Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies. you add the following line before committing it into git then push to heroku
+  config.force_ssl = true
+
 end
