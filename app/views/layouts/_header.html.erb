@@ -6,7 +6,43 @@
 					<ul class="nav pull-right">
 						<li><%= link_to "Home",   root_path %></li>
 					    <li><%= link_to "Help",   help_path %></li>
-				        <li><%= link_to "Sign in", '#' %></li>
+
+					    <!-- The way to change the links in the site layout involves using an if-else branching structure inside of Embedded Ruby like this:
+					      if signed_in? 
+					      # Links for signed-in users
+					      else
+					     end
+
+					    but completing it, the test in spec/requests/authentication_pages_spec.rb m for describe "with valid information" will pass.
+					    we used  the boostrap which you can take a look at http://getbootstrap.com/.
+					    but The dropdown menu requires the use of Bootstrap’s JavaScript library, which we can include using the Rails asset pipeline by editing the application JavaScript file in app/assets/javascripts/application.js add this line //= require bootstrap
+					    -->
+
+
+					    <% if signed_in? %>
+           				   <li><%= link_to "Users", '#' %></li>
+            			   <li id="fat-menu" class="dropdown">
+             				    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               					  Account <b class="caret"></b>
+              				    </a>
+              					<ul class="dropdown-menu">
+               						<li><%= link_to "Profile", current_user %></li>
+                					<li><%= link_to "Settings", '#' %></li>
+               					    <li class="divider"></li>
+                					<li>
+                 					  <%= link_to "Sign out", signout_path, method: "delete" %>
+                					</li>
+
+				        		    <!-- look in config/routes.rb for signout path . Notice that the signout link passes a hash argument indicating that it should submit with an HTTP DELETE request -->
+				        		</ul>
+				        	</li>
+				        <% else %>
+           					<li><%= link_to "Sign in", signin_path %></li>
+
+				       		<!-- we could write
+				       		user_path(current_user) instead of signin_path
+				       		but Rails allows us to link directly to the user, in this context automatically converting current_user into user_path(current_user) --> 
+				        <% end %>
 				    </ul>
 				</nav>
 			</div>

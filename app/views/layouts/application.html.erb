@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title(yield(:title)) %></title>
+  <title><%= full_title(yield(:title)) %></title> <!--app/helpers/application_helper.rb -->
   <%= stylesheet_link_tag    "application", media: "all", 
   "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -13,11 +13,11 @@
 	<%= render 'layouts/header' %>
 	
 	<div class="container">
-    #a message that appears on the subsequent page (in this case, welcoming our new user to the #application) and then disappears upon visiting a second page or on page reload
-    # see app/controllers/users_controller.rb  to make your own flash message
+    <!--a message that appears on the subsequent page (in this case, welcoming our new user to the #application) and then disappears upon visiting a second page or on page reload
+    # see app/controllers/users_controller.rb  to make your own flash message-->
     <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
 
 		<%= yield %>
         <%= render 'layouts/footer' %>

@@ -8,11 +8,16 @@ describe User do
 	subject {@user}
   it {should respond_to(:name)}
   it {should respond_to(:email)}
-  it { should respond_to(:password_digest)}
+  it {should respond_to(:password_digest)}
   it {should respond_to(:password)}
-  it {should respond_to(:password_confirmation)}
-  it {should respond_to(:authenticate)}
+  it { should respond_to(:password_confirmation) } 
+  #One technique for maintaining the user signin status from page to page The remember token needs to be associated with a user and stored for future use, so we’ll add it as an attribute to the User model
+  #We can get this test to pass by generating a remember token at the command line:
+  #$ rails generate migration add_remember_token_to_users and then go to; db/migrate/[ts]_add_remember_token_to_users.rb to add the remember_token columns to the users table 
+  it { should respond_to(:remember_token) } 
 
+
+  it { should respond_to(:authenticate) }
   it { should be_valid}
   describe "when name is not present" do
   	before{@user.name=""}
@@ -105,6 +110,14 @@ describe "return value of authenticate method" do
     specify {expect(user_for_invalid_password).to be_false}
   end
   
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank } # this equivalent to :it { expect(@user.remember_token).not_to be_blank }
+
+
+  end
+
 end
 
 

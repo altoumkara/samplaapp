@@ -1,15 +1,15 @@
-#this view uses Embedded Ruby to display the user’s name and email address, #assuming the existence of an instance variable called @user
+<!--this view uses Embedded Ruby to display the user’s name and email address, #assuming the existence of an instance variable called @user-->
 
 <% provide(:title, @user.name) %>
-#aside tag, which is used for content (such as sidebars) that complements the #rest of the page but can also stand alone. We include row and span4 classes, #which are both part of Bootstrap
+<!--aside tag, which is used for content (such as sidebars) that complements the #rest of the page but can also stand alone. We include row and span4 classes, #which are both part of Bootstrap-->
 <div class= "row">
 	<aside class= "span4">
 		<section>
 			<h1>
 				<%= gravatar_for @user %>
-	# Gravatar is a free service that allows users to upload images and #associate them with email addresses they control. Gravatars are a #convenient way to include user profile images without going through the #trouble of managing image upload, cropping, and storage; all we need to do #is construct the proper Gravatar image URL using the user’s email address #and the corresponding Gravatar image will automatically appear.
-	#By default, methods defined in any helper file are automatically available #in any view, but for convenience we’ll put the gravatar_for method in the #file for helpers associated with the Users controller.
-	# look AT: app/helpers/users_helper.rb 
+	<!--Gravatar is a free service that allows users to upload images and #associate them with email addresses they control. Gravatars are a #convenient way to include user profile images without going through the #trouble of managing image upload, cropping, and storage; all we need to do #is construct the proper Gravatar image URL using the user’s email address #and the corresponding Gravatar image will automatically appear.-->
+	<!--By default, methods defined in any helper file are automatically available #in any view, but for convenience we’ll put the gravatar_for method in the #file for helpers associated with the Users controller.-->
+	<!--look AT: app/helpers/users_helper.rb -->
 	
 		<%= @user.name %>
 

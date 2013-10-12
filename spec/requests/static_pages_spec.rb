@@ -7,21 +7,22 @@ describe "Static pages" do
   describe "Home page" do
     before { visit root_path} # we are using this block to eleminate the duplication of the visit block i commented below
 
-    it { should have_content ('Sample App') }
-    it { should have_title (full_title('')) } # we already define full_title in spec/support/utilities.rb file which is automatically inluded by RSpec
-    it { should_not have_title ('|Home') }
-    # visit root_path
-    #  expect(page).to have_content('Sample App')
+    it " should have_content 'Sample App' " do
+    #it { should have_title (full_title('')) } # we already define full_title in spec/support/utilities.rb file which is automatically inluded by RSpec
+    #it { should_not have_title ('|Home') }
+    #visit root_path
+     expect(page).to have_content('Sample App')
   end
-    #it "should have the base title" do
+    it "should have the base title" do
       # visit root_path
-    #expect(page).to have_title("Ruby on Rails Tutorial Sample App")
-     # end
-    # it "should not have a custom page title " do
-       #visit root_path
-      #  expect(page).not_to have_title("| Home")
-    #end
-  
+    expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+      end
+    it "should not have a custom page title " do
+      # visit root_path
+       expect(page).not_to have_title("| Home")
+    end
+    #To get the test suite to pass, we’ll remove the provide line from the Home page’s view, as seen in 
+  end
 
   describe "Help page" do
    before {visit help_path}

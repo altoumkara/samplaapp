@@ -4,25 +4,26 @@
 <div class="row">
 	<div class="span6 offset3">
 	   <%= form_for(@user) do |f|  %>
-	   <%= render 'shared/error_messages' %> #this generates a list of error messages #associated with the @user object. To display the messages in the browser, #we’ll render an error-messages partial on the user 'new' page, This means #that we have to create both the new app/views/shared directory and the #_error_messages.html.erb partial file.
+	   		<%= render 'shared/error_messages' %> 
+	  		 <!--this generates a list of error messages #associated with the @user object. To display the messages in the browser, #we’ll render an error-messages partial on the user 'new' page, This means #that we have to create both the new app/views/shared directory and the _error_messages.html.erb partial file.-->
 
 
-	   		#the f object does: when called with a method corresponding to an HTML #form element—such as a text field, radio button, or password field—it #returns code for that element specifically designed to set an attribute #of the @user object.
+	   		 <!--the f object does: when called with a method corresponding to an HTML #form element—such as a text field, radio button, or password field—it #returns code for that element specifically designed to set an attribute #of the @user object.-->
 
-	   		<%= f.label :name %>
-	   		<%= f.text_field :name %>
+	   			<%= f.label :name %>
+	   			<%= f.text_field :name %>
 
-	   		#creates the HTML needed to make a labeled text field element appropriate #for setting the name attribute of a User model. 
+	   		 <!--creates the HTML needed to make a labeled text field element appropriate #for setting the name attribute of a User model. -->
 
-	   		<%= f.label :email %>
-	   		<%= f.text_field :email %>
+	   			<%= f.label :email %>
+	   			<%= f.text_field :email %>
 
-	   		<%= f.label :password %>
-	   		<%= f.password_field :password %>
+	   			<%= f.label :password %>
+	   			<%= f.password_field :password %>
 
 
-       		<%= f.label :password_confirmation, "Confirmation" %>
-	   		<%= f.password_field :password_confirmation %>
+       			<%= f.label :password_confirmation, "Confirmation" %>
+	   			<%= f.password_field :password_confirmation %>
 
 
 	   		<%= f.submit "Create my account", class: "btn btn-large btn-primary" %>

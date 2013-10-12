@@ -16,6 +16,8 @@ class UsersController < ApplicationController
   	@user = User.new(user_params)
     #@user.password_confirmation = params[:user][:password_confirmation] # u can declare those params here or in the bottom with the user name, email etc..
   	if @user.save
+      # adding the bottom line code sign_in @user right after saving the user to the database allow the user to be sign in automatically after a succesful sign up. look spec/requests/user_pages_spec.rb 
+      sign_in @user
   		# handle a succefull save.
       flash[:success]="Welcome to the Sample App!" # see app/views/layouts/application.html.erb for more details about this code 
   		redirect_to @user

@@ -32,6 +32,12 @@ describe "signup" do
         expect { click_button submit }.not_to change(User, :count)
 
       end
+      describe "after submission" do
+        before { click_button submit }
+
+        it { should have_title('Sign up') }
+        it { should have_content('error') }
+      end
     end
 
     describe "with valid information" do
@@ -44,20 +50,18 @@ describe "signup" do
   click_button "Create my account"
 end.to change(User, :count).by(1)
 
-      #end
-
-      #it "should create a user" do
-
      
-        ##expect { click_button submit }.to change { User.count }.by(1)
-       ##response.should redirect_to @user
-      # expect { click_button submit }.to change(User, :count).by(1)
-      #end  
+describe "after saving the user" do
+        before { click_button submit }
+        let(:user) { user.find_by(Email: 'user@example.com') }
 
+        it { should have_link('Sign out') }
+        # a user should be automatically sign int after finishing signing up as everyother website.Here we’ve tested the appearance of the signout link to verify that the user was successfully signed in after signing up.
+        #With the sign_in method from Section 8.2, getting this test to pass by actually signing in the user is easy: just add sign_in @user right after saving the user to the database in app/controllers/users_controller.rb
+        it { should have_title(user.name) }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+      end
     end
   end
 end
 end
-
-
-
